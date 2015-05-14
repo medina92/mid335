@@ -1,8 +1,8 @@
-//CMPS 335
-//mid335.cpp
 //
 //
-//
+//Author: Daniel Medina
+//Program: mid335
+//Purpose: use unit testing to test a function
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>
