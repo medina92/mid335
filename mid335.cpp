@@ -58,25 +58,27 @@ int main(int argc, char *argv[])
         case 'Z': note = Z; break;
     }
     //You may call your unit test here...
+    tol = atof(argv[3]);
+    cout << "tolerance: " << tol << endl;
     cout << "freq function unit-test\n" << endl;    
     cout << "note octave value   diff" << endl;
     cout << "---- ------ ------- ----------" << endl;
     octave_delta = atoi(argv[2]);
     tol = atof(argv[3]);
     int badElem = 0;
-    double diff = 0.0;
-    double C = 16.35;
-    double C_sharp = 17.32;
-    double D = 18.35;
-    double D_sharp = 19.45;
-    double E = 20.60;
-    double F = 21.83;
-    double F_sharp = 23.12;
-    double G = 24.50;
-    double G_sharp = 25.96;
-    double A = 27.50;
-    double A_sharp = 29.14;
-    double B = 30.87;
+    float diff = 0.0;
+    float C = 16.35;
+    float C_sharp = 17.32;
+    float D = 18.35;
+    float D_sharp = 19.45;
+    float E = 20.60;
+    float F = 21.83;
+    float F_sharp = 23.12;
+    float G = 24.50;
+    float G_sharp = 25.96;
+    float A = 27.50;
+    float A_sharp = 29.14;
+    float B = 30.87;
     
     if(note == Z && octave_delta == 0) {
         for (int i = 0; i <= 8; i++) {
@@ -199,18 +201,18 @@ int main(int argc, char *argv[])
                     }
                 }
             }
-            C *= 2.0;
-            C_sharp *= 2.0;
-            D *= 2.0;
-            D_sharp *= 2.0;
-            E *= 2.0;
-            F *= 2.0;
-            F_sharp *= 2.0;
-            G *= 2.0;
-            G_sharp *= 2.0;
-            A *= 2.0;
-            A_sharp *= 2.0;
-            B *= 2.0;
+            C += C;
+            C_sharp += C_sharp;
+            D += D;
+            D_sharp += D_sharp;
+            E += E;
+            F += F;
+            F_sharp += F_sharp;
+            G += G;
+            G_sharp += G_sharp;
+            A += A;
+            A_sharp += A_sharp;
+            B += B;
         }
     }
     cout << "bad element count: " << badElem << endl;
