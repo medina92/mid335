@@ -40,9 +40,10 @@ int main(int argc, char *argv[])
 {
     note_t note;
     int octave_delta;
+    double tol = 0.0;
 
-    if (argc != 3) {
-        cout << "Usage: " << argv[0] << " <NOTE>  <OCTAVE_DELTA>" << endl;
+    if (argc != 4) {
+        cout << "Usage: " << argv[0] << " <NOTE>  <OCTAVE_DELTA> <TOLERANCE>" << endl;
         return 0;
     }
     //
@@ -61,7 +62,22 @@ int main(int argc, char *argv[])
     cout << "note octave value   diff" << endl;
     cout << "---- ------ ------- ----------" << endl;
     octave_delta = atoi(argv[2]);
-
+    tol = atof(argv[3]);
+    int badElem = 0;
+    double diff = 0.0;
+    double C = 16.35;
+    double C_sharp = 17.32;
+    double D = 18.35;
+    double D_sharp = 19.45;
+    double E = 20.60;
+    double F = 21.83;
+    double F_sharp = 23.12;
+    double G = 24.50;
+    double G_sharp = 25.96;
+    double A = 27.50;
+    double A_sharp = 29.14;
+    double B = 30.87;
+    
     if(note == Z && octave_delta == 0) {
         for (int i = 0; i <= 8; i++) {
             for(int j = 1; j <= 12; j++) {
@@ -71,10 +87,133 @@ int main(int argc, char *argv[])
                 if(j < 10) { 
                     cout << " " << j << "     " << i << "    "; 
                 }
-                cout << freq((note_t)j, i) << endl;
+                cout << freq((note_t)j, i);
+                
+                if(j == 1) {
+                    diff = fabs(freq((note_t)j, i) - C);
+                    cout << " " << diff;
+                    if(diff > tol) {
+                        cout << "  <------bad" << endl;
+                        badElem++;
+                    } else {
+                        cout << "     good" << endl;
+                    }
+                } else if( j == 2) {
+                    diff = fabs(freq((note_t)j, i) - C_sharp);
+                    cout << " " << diff;
+                    if(diff > tol) {
+                        cout << "  <------bad" << endl;
+                        badElem++;
+                    } else {
+                        cout << "     good" << endl;
+                    }
+                } else if(j == 3) {
+                    diff = fabs(freq((note_t)j, i) - D);
+                    cout << " " << diff;
+                    if(diff > tol) {
+                        cout << "  <------bad" << endl;
+                        badElem++;
+                    } else {
+                        cout << "     good" << endl;
+                    }
+                } else if(j == 4) {
+                    diff = fabs(freq((note_t)j, i) - D_sharp);
+                    cout << " " << diff;
+                    if(diff > tol) {
+                        cout << "  <------bad" << endl;
+                        badElem++;
+                    } else {
+                        cout << "     good" << endl;
+                    }
+                } else if(j == 5) {
+                    diff = fabs(freq((note_t)j, i) - E);
+                    cout << " " << diff;
+                    if(diff > tol) {
+                        cout << "  <------bad" << endl;
+                        badElem++;
+                    } else {
+                        cout << "     good" << endl;
+                    }
+                } else if(j == 6) {
+                    diff = fabs(freq((note_t)j, i) - F);
+                    cout << " " << diff;
+                    if(diff > tol) {
+                        cout << "  <------bad" << endl;
+                        badElem++;
+                    } else {
+                        cout << "     good" << endl;
+                    }
+                } else if(j == 7) {
+                    diff = fabs(freq((note_t)j, i) - F_sharp);
+                    cout << " " << diff;
+                    if(diff > tol) {
+                        cout << "  <------bad" << endl;
+                        badElem++;
+                    } else {
+                        cout << "     good" << endl;
+                    }
+                } else if(j == 8) {
+                    diff = fabs(freq((note_t)j, i) - G);
+                    cout << " " << diff;
+                    if(diff > tol) {
+                        cout << "  <------bad" << endl;
+                        badElem++;
+                    } else {
+                        cout << "     good" << endl;
+                    }
+                } else if(j == 9) {
+                    diff = fabs(freq((note_t)j, i) - G_sharp);
+                    cout << " " << diff;
+                    if(diff > tol) {
+                        cout << "  <------bad" << endl;
+                        badElem++;
+                    } else {
+                        cout << "     good" << endl;
+                    }
+                } else if(j == 10) {
+                    diff = fabs(freq((note_t)j, i) - A);
+                    cout << " " << diff;
+                    if(diff > tol) {
+                        cout << "  <------bad" << endl;
+                        badElem++;
+                    } else {
+                        cout << "     good" << endl;
+                    }
+                } else if(j == 11) {
+                    diff = fabs(freq((note_t)j, i) - A_sharp);
+                    cout << " " << diff;
+                    if(diff > tol) {
+                        cout << "  <------bad" << endl;
+                        badElem++;
+                    } else {
+                        cout << "     good" << endl;
+                    }
+                } else if(j == 12) {
+                    diff = fabs(freq((note_t)j, i) - B);
+                    cout << " " << diff;
+                    if(diff > tol) {
+                        cout << "  <------bad" << endl;
+                        badElem++;
+                    } else {
+                        cout << "     good" << endl;
+                    }
+                }
             }
+            C *= 2.0;
+            C_sharp *= 2.0;
+            D *= 2.0;
+            D_sharp *= 2.0;
+            E *= 2.0;
+            F *= 2.0;
+            F_sharp *= 2.0;
+            G *= 2.0;
+            G_sharp *= 2.0;
+            A *= 2.0;
+            A_sharp *= 2.0;
+            B *= 2.0;
         }
     }
+    cout << "bad element count: " << badElem << endl;
     cout << "unit test complete" << endl;
     
     if (note > END && note != Z) {
